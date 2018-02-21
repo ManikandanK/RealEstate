@@ -1,0 +1,45 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" jstcache="0">
+  <div style="color:red"> <%=flash[:alert]%></div>
+  <h1 class="page-header">Properties</h1>
+  <div class="table-responsive col-md-6">
+
+   <%=render :partial => "/layouts/generate_pdf_link"%>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>MAP</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%@properties.each do |property|%>
+          <tr>
+            <td><%=property.id %></td>
+            <td><%=property.name %></td>
+            <td><%=property.property_type %></td>
+            <td><%=property.location %></td>
+            <td><%=property.state %></td>
+            <td><%=property.country %></td>
+            <td><%=link_to "Click Here","#",:onclick=>"set_map#{property.map_position}" %></td>
+          </tr>
+      <%end%>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-6" jstcache="0">
+
+    <div id="gmap" style="width: 500px; height: 300px">
+
+    </div>
+  </div>
+
+
+</div>

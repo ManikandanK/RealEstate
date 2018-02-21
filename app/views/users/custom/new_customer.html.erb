@@ -1,0 +1,56 @@
+
+<div class="col-md-4 col-md-offset-3">
+  <h2>New Customer</h2>
+
+  <%= form_tag("/users/create_customer") do  %>
+      <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="form-group">
+        <label for="Full Name">Full Name</label>
+        <%= text_field :users,:full_name, autofocus: true,:class=>"form-control",:placeholder=>"Full Name" %>
+      </div>
+
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <%= email_field :users,:email, autofocus: true,:class=>"form-control",:placeholder=>"Email" %>
+      </div>
+
+
+      <div class="form-group">
+        <label for="Phone Number">Phone Number</label>
+        <%= text_field :users,:phone_number, autofocus: true,:class=>"form-control",:placeholder=>"Phone Number" %>
+      </div>
+
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <% if @validatable %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= password_field :users,:password, autocomplete: "off",:class=>"form-control",:placeholder=>"Password"  %>
+      </div>
+
+      <div class="form-group">
+        <label for="Password Confirmation">Password Confirmation</label>
+
+        <%= password_field :users,:password_confirmation, autocomplete: "off",:class=>"form-control",:placeholder=>"Password Confirmation"  %>
+      </div>
+
+      <div class="form-group">
+        <label for="Address">Address</label>
+        <%= text_area :users,:address, autofocus: true,:class=>"form-control",:placeholder=>"Address" %>
+      </div>
+
+      <%= submit_tag "Register", :class=>"btn btn-primary" %>
+
+  <% end %>
+</div>
+

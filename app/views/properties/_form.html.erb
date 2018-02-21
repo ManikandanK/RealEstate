@@ -1,0 +1,66 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" jstcache="0">
+  <h2 class="page-header"><%=@property.new_record? ? "Add" : "Edit"%> Properties</h2>
+
+  <div class="col-md-6">
+  <%= form_for(@property) do |f| %>
+      <% if @property.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+            <ul>
+              <% @property.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="form-group">
+        <label for="Email">Name</label>
+        <%= f.text_field :name, autofocus: true,:class=>"form-control",:placeholder=>"Name" %>
+      </div>
+
+      <div class="form-group">
+        <label for="Property Type">Property Type</label>
+        <select class="form-control" name="property[property_type]" id="sel1">
+          <option>Rent</option>
+          <option>Sell</option>
+        </select>
+      </div>
+
+    <div class="form-group">
+      <label for="Property Type">Map Details </label>
+      <div style="border:2px solid darkgreen;padding: 10px">
+          <%= simple_form_for @property do |ff| %>
+              <div class="form-group">
+                <%= ff.input :country, collection: CountryStateSelect.countries_collection %>
+              </div>
+
+              <div class="form-group">
+                <%options = { form: f, field_names: { :country => :country, :state => :state } }%>
+                 <%= ff.input :state, CountryStateSelect.state_options(options) %>
+              </div>
+          <%end%>
+          <div class="form-group">
+            <label for="Map details">Longitude and Latitude</label>
+            <%= f.text_field :map_position, autofocus: true,:class=>"form-control",:placeholder=>"Please select from MAP(Longitude and Latitude)" %>
+          </div>
+      </div>
+      </div>
+
+      <%= f.submit "Add Property",:onclick=>"$('#new_property').submit()" ,:class=>"btn btn-primary" %>
+
+  <% end %>
+  </div>
+
+  <div class="col-md-6" jstcache="0">
+
+    <div id="gmap" style="width: 500px; height: 300px">
+
+    </div>
+  </div>
+
+
+
+
+</div>

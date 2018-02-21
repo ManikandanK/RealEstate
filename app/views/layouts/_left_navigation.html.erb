@@ -1,0 +1,21 @@
+<div class="col-sm-3 col-md-2 sidebar">
+
+  <%if current_user.admin? or current_user.agent?%>
+      <ul class="nav nav-sidebar">
+        <%if current_user.admin?%>
+            <li <%=active_menu("Agents")%>><a href="/users/list_agents">Agents</a></li>
+            <li <%=active_menu("New Agent")%>><a href="/users/new_agent">Create Agent</a></li>
+            <li <%=active_menu("Customers")%> ><a href="/users/list_customers">Customers</a></li>
+            <li <%=active_menu("New Customer")%>><a href="/users/new_customer">Create Customer</a></li>
+         <%else%>
+            <li <%=active_menu("Customers")%> ><a href="/users/list_customers">Customers</a></li>
+            <li <%=active_menu("New Customer")%>><a href="/users/new_customer">Create Customer</a></li>
+         <%end%>
+      </ul>
+  <%end%>
+  <ul class="nav nav-sidebar">
+    <li <%=active_menu("Properties")%>><a data-no-turbolink='true' href="/properties">All Properties</a></li>
+    <li <%=active_menu("My Properties")%>><a data-no-turbolink='true' href="/properties/my_list">My Properties</a></li>
+    <li <%=active_menu("Add New Property")%>><a data-no-turbolink='true' href="/properties/new">Add New Property</a></li>
+  </ul>
+</div>

@@ -1,0 +1,30 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <div style="color:red"> <%=flash[:alert]%></div>
+<h2 class="sub-header"><%=action_name.upcase.split('_').join(' ')%></h2>
+<div class="table-responsive">
+  <%=render :partial => "/layouts/generate_pdf_link"%>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+      <%@users.each do |user|%>
+        <tr>
+          <td><%= user.id%></td>
+          <td><%= user.full_name%></td>
+          <td><%= user.email%></td>
+          <td><%= user.phone_number%></td>
+          <td><%= user.roles.collect(&:name).collect(&:titleize).join(', ')%></td>
+
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+</div>

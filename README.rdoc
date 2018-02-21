@@ -1,0 +1,63 @@
+== README
+
+Real Estate Application, It gives basic functionalities to manage Agent, Customer and Property.
+
+Notable Features:
+
+* User Registration.
+
+* User Management(Admin, Agent, Customer).
+
+* Customer can create and view properties by using google APIS.
+
+* Role Managemant: Authentication and Authorization.
+
+* Report Generation: downloaded as PDF format.
+
+* Adding Property based on Country and State selection and auto reflect on Maps to easy selection of map position.
+
+
+Library Dependents
+
+* Ruby version 2.2.3
+
+* Rails version 4.2.5
+
+* Gem details: check with Gemfile for more details.
+
+* Database: Sqlite3
+
+* Other Frameworks: Jquery, GoogelApis
+
+
+Steps to install the applicatio in your local application
+
+* cd ~/project_path/RealState/
+
+* bundle install
+
+* rake db:create
+
+* rake db:migrate
+
+* rake db:seed
+
+Username & Password Details:
+
+* Admin: < username: admin@realestate.com, password: beh4ppy## >
+
+* Agent: < username: agent@realestate.com, password: beagent## >
+
+* Customer:  < username: customer114@realestate.com, password: becustomer### >
+
+
+RestAPIs:
+
+* All restul apis are urls available with '.json' extension.
+
+ReportGeneration:
+
+* All the list pages will have 'Generate Report' button to get it in 'PDF' format and also available as PDF by adding '.pdf' extension in every URL.
+
+
+
